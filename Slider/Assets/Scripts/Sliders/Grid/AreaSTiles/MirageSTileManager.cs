@@ -22,7 +22,6 @@ public class MirageSTileManager : Singleton<MirageSTileManager>
         mirageSTiles[islandId - 1].transform.position = new Vector2(x*17, y*17);
         mirageSTiles[islandId - 1].gameObject.SetActive(true);
         if (islandId == 7) mirageTailPos = new Vector2Int(x, y);
-        Debug.Log(mirageTailPos);
         //Insert enabling coroutine fading in
     }
     /// <summary>
@@ -43,7 +42,6 @@ public class MirageSTileManager : Singleton<MirageSTileManager>
         if (islandId < 0) foreach (GameObject o in mirageSTiles) o.SetActive(false);
         if (islandId == 7) mirageTailPos = new Vector2Int(-1, -1);
         else mirageSTiles[islandId - 1].gameObject.SetActive(false);
-        Debug.Log(mirageTailPos);
     }
     private bool isPlayerOnMirage(out int islandId)
     {
