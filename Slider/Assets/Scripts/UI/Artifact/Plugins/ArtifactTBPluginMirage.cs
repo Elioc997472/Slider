@@ -25,6 +25,7 @@ public class ArtifactTBPluginMirage : ArtifactTBPlugin
         {
             Debug.Log("disablemirage");
             DisableMirage();
+            button.SetHighlighted(true);
             return;
         }
         Debug.Log("selecting");
