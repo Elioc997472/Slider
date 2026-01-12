@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
         Debug.Log($"[Start] Starting game on version {Application.version}. Running on {SystemInfo.operatingSystem}. Time is {System.DateTime.Now}.");
 
         CurrentPlatform = Platform.PC; // default to PC for now
+#if CONSOLE_BUILD
+        CurrentPlatform = Platform.Xbox;
+#endif
 
         saveSystem = new SaveSystem();
     }

@@ -634,14 +634,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6182351309747880561, guid: 4acdeb3bce27bda459c54c21d09f3212, type: 3}
-      propertyPath: selectables.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6182351309747880561, guid: 4acdeb3bce27bda459c54c21d09f3212, type: 3}
-      propertyPath: selectables.Array.data[4]
-      value: 
-      objectReference: {fileID: 1941482515}
     - target: {fileID: 6195773505279455977, guid: 4acdeb3bce27bda459c54c21d09f3212, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
