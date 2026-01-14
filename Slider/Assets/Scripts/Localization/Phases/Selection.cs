@@ -195,6 +195,7 @@ namespace Localization
         public static string SpecialItemToPath(string specialItem) => $"__SpecialItem/{specialItem}";
 
         public static string AreaToDiscordNamePath(Area area) => $"__DiscordMessages/{area.ToString()}";
+        public static string AreaToDiscordNamePath(string s) => $"__DiscordMessages/{s}";
 
         public static string AreaToDisplayNamePath(Area area) => $"__AreaDisplayName/{area.ToString()}";
         

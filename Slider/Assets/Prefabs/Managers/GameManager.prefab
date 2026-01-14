@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 8750917147391358174}
   - component: {fileID: 2824224475968117142}
   - component: {fileID: 7033424637333634368}
-  - component: {fileID: 3751631789337053834}
+  - component: {fileID: 7922784938774033961}
   - component: {fileID: 6531386949380389835}
   - component: {fileID: 8091794286791977582}
   - component: {fileID: 7750866608286493436}
@@ -206,7 +206,7 @@ MonoBehaviour:
     prefab: {fileID: 8847753119295245056, guid: e8a5a5c8f3da82b469ac93a43accf240, type: 3}
   - particleType: 1
     prefab: {fileID: 5119737509937487017, guid: 82596639576ff144ebd1c697a19b4b9d, type: 3}
---- !u!114 &3751631789337053834
+--- !u!114 &7922784938774033961
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8750917147391358172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4f6ab7f91bfc5e429fe7542e24b5e44, type: 3}
+  m_Script: {fileID: 11500000, guid: cdba4ff2153c7bb49adc974527d5eff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6531386949380389835
@@ -292,10 +292,6 @@ MonoBehaviour:
     isBig: 0
   - tmpFont: {fileID: 11400000, guid: c7029ecf3a2b2c44b8c14e89e54a7682, type: 2}
     isBig: 0
-  BigFonts:
-  - {fileID: 11400000, guid: 15c96e9e615f9be48adec32e3abc8f7b, type: 2}
-  - {fileID: 11400000, guid: 99cf01e0fd7152e4892426ca1b771517, type: 2}
-  - {fileID: 11400000, guid: 00d6975ab8df27d468e1ec1262ad5c66, type: 2}
 --- !u!114 &5852722716209220533
 MonoBehaviour:
   m_ObjectHideFlags: 0

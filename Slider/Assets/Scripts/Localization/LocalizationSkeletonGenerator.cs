@@ -311,6 +311,8 @@ public class LocalizationSkeletonGenerator : EditorWindow
            globalStrings.Add(LocalizableContext.AreaToDiscordNamePath(kv.Key), kv.Value);
        }
        
+        globalStrings.Add(LocalizableContext.AreaToDiscordNamePath("Menus"), Areas.MENUS_DISCORD_NAME);
+       
        foreach (var kv in Areas.DisplayNames)
        {
            globalStrings.Add(LocalizableContext.AreaToDisplayNamePath(kv.Key), kv.Value);

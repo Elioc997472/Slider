@@ -17,6 +17,8 @@ public static class Areas
         { Area.Military, "Commiting Warcrimes" },
         { Area.MagiTech, "Playing With Portals" },
     };
+
+    public const string MENUS_DISCORD_NAME = "In the menus";
     
     // This looks a bit horrendous, I know, but StackExchange offers this input:
     // https://stackoverflow.com/questions/268084/creating-a-constant-dictionary-in-c-sharp

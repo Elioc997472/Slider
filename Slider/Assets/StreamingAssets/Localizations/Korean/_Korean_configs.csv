@@ -82,6 +82,7 @@ be corrupted, these rules may be helpful for debugging purposes...
 "__DiscordMessages/Factory","Powering up the Factory","공장에 전원 넣는 중","",
 "__DiscordMessages/Jungle","Traversing the Jungle","정글 횡단하는 중","",
 "__DiscordMessages/MagiTech","Playing With Portals","포탈 이용하는 중","",
+"__DiscordMessages/Menus","In the menus","메뉴 탐색 중","",
 "__DiscordMessages/Military","Commiting Warcrimes","전쟁 범죄를 저지르는 중","",
 "__DiscordMessages/Mountain","Riding Through the Mountain","산을 등반하는 중","",
 "__DiscordMessages/None","None","비어있음","",

@@ -129,6 +129,9 @@ public class LocalizationLoader : Singleton<LocalizationLoader>, ILocalizationTr
 
     public static string LoadAreaDiscordTranslation(Area area)
         => _instance.LoadTranslatedString(LocalizableContext.AreaToDiscordNamePath(area), area.ToString());
+
+    public static string LoadInTheMenusDiscordTranslation()
+        => _instance.LoadTranslatedString(LocalizableContext.AreaToDiscordNamePath("Menus"), Areas.MENUS_DISCORD_NAME);
     
     public static string LoadAreaDisplayName(Area area)
         => _instance.LoadTranslatedString(LocalizableContext.AreaToDisplayNamePath(area), area.ToString());

@@ -82,6 +82,7 @@ be corrupted, these rules may be helpful for debugging purposes...
 "__DiscordMessages/Factory","Powering up the Factory","正在修补工厂","",
 "__DiscordMessages/Jungle","Traversing the Jungle","正在穿越森林","",
 "__DiscordMessages/MagiTech","Playing With Portals","正在传送时空","",
+"__DiscordMessages/Menus","In the menus","In the menus","",
 "__DiscordMessages/Military","Commiting Warcrimes","正在激战","",
 "__DiscordMessages/Mountain","Riding Through the Mountain","正在横行山脉","",
 "__DiscordMessages/None","None","无","",

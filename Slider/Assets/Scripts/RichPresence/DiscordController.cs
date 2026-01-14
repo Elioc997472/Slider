@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,18 +6,13 @@ using UnityEngine.SceneManagement;
 /// Handles Discord Rich Presence. Should probably be attached to GameManager or
 /// some other object which exists at game start and persists through scenes.
 /// </summary>
-public class DiscordController : Singleton<DiscordController>
+public class DiscordController : IPresenceProxy
 {
     private const long CLIENT_ID = 953335446056882186;
     private Discord.Discord discord; // This looks hilarious but it's how the SDK works
     private long secondsSinceEpoch; // Used for tracking time elapsed
 
-    private void Awake()
-    {
-        InitializeSingleton(ifInstanceAlreadySetThenDestroy:this);
-    }
-
-    void Start()
+    public void Start()
     {
         if (discord == null)
         {
@@ -37,18 +30,10 @@ public class DiscordController : Singleton<DiscordController>
             // We need our epoch time for tracking time elapsed
             TimeSpan t = DateTime.UtcNow - new DateTime(1970, 1, 1);
             secondsSinceEpoch = (int)t.TotalSeconds;
-
-            // Update activity status whenever a slider is collected or the scene is changed
-            SGrid.OnSTileCollected += (object sender, SGrid.OnSTileEnabledArgs args) => UpdateActivity();
-            SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) => UpdateActivity();
-
-            UpdateActivity();
-
-            //Debug.Log("Starting Rich Presence");
         }
     }
 
-    void Update()
+    public void Update()
     {
         // "homie really told discord shush be quiet" � Lord Boomo
         try
@@ -58,22 +43,22 @@ public class DiscordController : Singleton<DiscordController>
         catch { }
     }
 
+    public void OnApplicationQuit()
+    {
+        discord?.Dispose(); // Stops rich presence when the game closes
+    }
+
     /// <summary>
     /// Call this whenever we want to update the rich presence status.
     /// Currently that's only when the player picks up a slider or changes scenes.
     /// </summary>
-    void UpdateActivity()
+    public void UpdateActivity()
     {
         var activityManager = discord.GetActivityManager();
 
-        var state = "In the menus";
-        if (SGrid.Current != null)
-        {
-            state = $"{SGrid.Current.MyArea.GetDiscordName()} ({SGrid.Current.GetNumTilesCollected()} / {SGrid.Current.GetTotalNumTiles()})";
-        }
         var activity = new Discord.Activity
         {
-            State = state,
+            State = RichPresence.GetDetailedPrecenseString(),
             Timestamps =
             {
                 // You give Discord an Epoch time in seconds and it displays the time elapsed since then
@@ -83,10 +68,5 @@ public class DiscordController : Singleton<DiscordController>
         };
 
         activityManager.UpdateActivity(activity, (result) => { });
-    }
-
-    private void OnApplicationQuit()
-    {
-        discord?.Dispose(); // Stops rich presence when the game closes
     }
 }

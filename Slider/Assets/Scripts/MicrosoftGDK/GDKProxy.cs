@@ -169,21 +169,19 @@ public class GDKProxy : Singleton<GDKProxy>
 
     private static void UnlockAchievementComplete(int hResult)
     {
-        string message = "Achievement Unlocked!";
-
         if (hResult == HR.HTTP_E_STATUS_NOT_MODIFIED)
         {
-            message = "Achievement ALREADY Unlocked!";
+            // Debug.Log($"[GDK] SUCCESS: {message}");
         }
         else if (HR.FAILED(hResult))
         {
             Debug.LogError($"[GDK] FAILED: Achievement Update, hResult=0x{hResult:X} ({HR.NameOf(hResult)})");
             return;
         }
-
-        // Debug.Log($"[GDK] SUCCESS: {message}");
     }
+#endregion
 
+#region Saves
     public static bool AreSavesReady()
     {
         return !string.IsNullOrEmpty(GetSaveFilePath()) && _instance._xGameSaveInitialized;
@@ -197,7 +195,38 @@ public class GDKProxy : Singleton<GDKProxy>
         }
         return string.Empty;
     }
-
 #endregion
+
+#region Rich Presence
+    // presenceId is Area.ToString() or "Menus"
+    public static void UpdateRichPresence(string presenceId)
+    {
+        XblPresenceRichPresenceIds.Create(
+            GDKGameRuntime.GameConfigScid,
+            presenceId,
+            Array.Empty<string>(), // This is where we would do slider count like (4/9) https://learn.microsoft.com/en-us/gaming/gdk/docs/reference/live/xsapi-c/presence_c/functions/xblpresencesetpresenceasync
+            out XblPresenceRichPresenceIds presence
+        );
+
+        SDK.XBL.XblPresenceSetPresenceAsync(
+            _instance._xblContextHandle,
+            false,
+            presence,
+            UpdateRichPresenceComplete
+        );
+    }
+
+    private static void UpdateRichPresenceComplete(int hResult)
+    {
+        if (HR.FAILED(hResult))
+        {
+            Debug.LogError($"[GDK] FAILED: Update presence async, hResult=0x{hResult:X} ({HR.NameOf(hResult)})");
+            return;
+        }
+
+        // Debug.Log("[GDK] SUCCESS: Rich presence updated.");
+    }
+#endregion
+
 #endif
 }
