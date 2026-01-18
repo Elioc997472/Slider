@@ -8,6 +8,7 @@ public class GDKPresenceController : IPresenceProxy
 
     public void UpdateActivity()
     {
+#if MICROSOFT_GDK_SUPPORT
         if (SGrid.Current != null)
         {
             GDKProxy.UpdateRichPresence(SGrid.Current.MyArea.ToString());
@@ -16,5 +17,6 @@ public class GDKPresenceController : IPresenceProxy
         {
             GDKProxy.UpdateRichPresence("Menus");
         }
+#endif
     }
 }

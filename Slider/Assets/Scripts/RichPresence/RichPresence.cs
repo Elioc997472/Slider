@@ -12,6 +12,12 @@ public class RichPresence : Singleton<RichPresence>
         InitializeSingleton(ifInstanceAlreadySetThenDestroy:this);
 
         proxies.Add(new DiscordController());
+#if MICROSOFT_GDK_SUPPORT
+        proxies.Add(new GDKPresenceController());
+#endif
+#if !DISABLESTEAMWORKS
+        proxies.Add(new SteamPresenceController());
+#endif
     }
 
     private void Start() 
